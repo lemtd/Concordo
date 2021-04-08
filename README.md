@@ -1,6 +1,6 @@
 # Concordo
 <br />
-## Universidade Federal do Rio Grande do Norte (UFRN)
+## Universidade Federal do Rio Grande do Norte (UFRN)<br />
 ## Instituto Metrópole Digital (IMD)
 
 <br />
