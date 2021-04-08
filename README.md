@@ -17,15 +17,15 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
 
 - Pasta "src" possui 10 arquivos .cpp:
   - Concordo.cpp (arquivo com o código da função main);
-  - Extra.cpp (arquivo contendo somente o código de funções adicionais; não contém a função main);
-  - User.cpp (arquivo com a classe User e seus devidos atributos);
-  - Message.cpp (arquivo com o código da classe Message e seus devidos atributos);
-  - Channel.cpp (arquivo com o código da classe base Channel e seus devidos atributos);
-  - Text.cpp (arquivo com o código da classe derivada Text e seus devidos atributos);
-  - Voice.cpp (arquivo com o código da classe derivada Voice e seus devidos atributos);
-  - Server.cpp (arquivo com o código da classe Server e seus devidos atributos);
-  - System.cpp (arquivo com o código da classe System e seus devidos atributos, incluindo métodos desenvolvidos para o projeto);
-  - Executor.cpp (arquivo com o código da classe Executor e seus devidos atributos, incluindo métodos desenvolvidos para o projeto);
+  - Extra.cpp (arquivo contendo somente o código de funções adicionais);
+  - User.cpp (arquivo com o código da classe User);
+  - Message.cpp (arquivo com o código da classe Message);
+  - Channel.cpp (arquivo com o código da classe base Channel);
+  - Text.cpp (arquivo com o código da classe derivada Text);
+  - Voice.cpp (arquivo com o código da classe derivada Voice);
+  - Server.cpp (arquivo com o código da classe Server);
+  - System.cpp (arquivo com o código da classe System);
+  - Executor.cpp (arquivo com o código da classe Executor);
 
 - Pasta "include" possui 9 arquivos .h:
   - Extra.h (arquivo de cabeçalho, possui a assinatura das funções adicionais);
