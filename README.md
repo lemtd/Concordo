@@ -13,7 +13,7 @@
 #
 
 ### 1. Descrição sobre o programa:
-O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h, além dos arquivos makefile, script_comandos.txt e README.md:
+O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h, além dos arquivos makefile, script_comandos.txt, .gitignore e README.md:
 
 - Pasta "src" possui 10 arquivos .cpp:
   - Concordo.cpp (arquivo com o código da função main);
