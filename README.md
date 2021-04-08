@@ -12,7 +12,8 @@
 #
 #
 
-### 1. Descrição sobre o programa:
+### 1. Sobre o projeto:
+Concordo é um sistema como protótipo do Discord e desenvolvido em C++ e como atividade para a disciplina de Linguagem de Programação I do curso Bacharelado em Tecnologia da Informação da UFRN.
 O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h, além dos arquivos makefile, script_comandos.txt, .gitignore e README.md:
 
 - Pasta "src" possui 10 arquivos .cpp:
