@@ -40,6 +40,7 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
 
 - makefile (arquivo de configuração que instrui o que o Make deve fazer);
 - script_comandos.txt (comandos pré estabelecidos para usar ao compilar o programa);
+- .gitignore;
 - README.md.
 
 #
