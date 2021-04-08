@@ -103,6 +103,7 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
     - Abrir o terminal;
     - Utilizar o comando "ls" no terminal para listar as pastas;
     - Utilizar o comando "cd Documentos" no terminal para acessar a pasta Documentos;
+    - Utilizar o comando "cd Concordo" no terminal para acessar a pasta do Concordo;
     - Utilizar o comando "make run" no terminal para rodar o arquivo makefile que irá compilar o programa sem o script_comandos.txt;
     - Caso queira utilizar o script, utilizar comando "make" seguido de "./Concordo < script_comandos.txt".
 
