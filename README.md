@@ -1,16 +1,16 @@
-## Concordo
-
+# Concordo
+<br />
 ## Universidade Federal do Rio Grande do Norte (UFRN)
 ## Instituto Metrópole Digital (IMD)
 
-#
+<br />
 
 ### Disciplina: Linguagem de Programação I
 ### Professor: Isaac Franco Fernandes
 ### Aluna: Leticia Manuelle Tomaz Deodato (20180063452)
 
-#
-#
+<br />
+<br />
 
 ### 1. Sobre o projeto:
 Concordo é um sistema espelhado no Discord e desenvolvido em C++ como projeto para a disciplina de Linguagem de Programação I do curso Bacharelado em Tecnologia da Informação da UFRN.
