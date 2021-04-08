@@ -279,8 +279,8 @@ Não há limitações.
 
 ### 6. Limitações minhas:
 Entrega I:
-Encontrei dificuldade na funcionalidade *enter-server* ao tentar implementar o acesso ao vector de IDS de participantes de um servidor, por isso deixei o vector de IDS de particpantes como público em sua classe.
-Ao colocar o arquivo para rodar com o makefile, apareceram alguns erros com relação a algumas funcionalidades adicionais, que posteriormente não foram mais utilizadas. Ainda assim, o professor indicou o que era e aonde era o erro e me ajudou a corrigí-lo.
+Encontrei dificuldade na funcionalidade *enter-server* ao tentar implementar o acesso ao vector de IDS de participantes de um servidor, por esse motivo deixei esse mesmo vector como público em sua classe.<br />
+Além disso, ao colocar o arquivo para compilar com o makefile, apareceram alguns erros com relação a algumas funcionalidades adicionais, que posteriormente não foram mais utilizadas. Ainda assim, o professor indicou o que era e aonde era o erro e me ajudou a corrigí-lo.
 
 #
 
