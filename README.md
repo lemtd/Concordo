@@ -110,162 +110,162 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
 
 ### 4. Roteiro:
 - Ao rodar pela primeira vez o programa, o usuário deverá utilizar qualquer dos seguintes comandos:
-    > quit
-    > create-user <email> <senha> <nome>
-    > login <email> <senha>
-    > disconnect
-    > create-server <nome_servidor>
-    > set-server-desc <nome_servidor> "<descrição>"
-    > set-server-invite-code <nome_servidor> <código convite>
-    > list-servers
-    > remove <nome_servidor>
-    > enter-server <nome_servidor> <código convite>
-    > leave-server
+    > quit<br />
+    > create-user <email> <senha> <nome><br />
+    > login <email> <senha><br />
+    > disconnect<br />
+    > create-server <nome_servidor><br />
+    > set-server-desc <nome_servidor> "<descrição>"<br />
+    > set-server-invite-code <nome_servidor> <código convite><br />
+    > list-servers<br />
+    > remove <nome_servidor><br />
+    > enter-server <nome_servidor> <código convite><br />
+    > leave-server<br />
     > list-participants
 
 - Enviando no terminal o comando "*quit*", o usuário irá selecionar a opção de saída do Concordo:
-    > quit
+    > quit<br />
     > Saindo do Concordo
 
 - Enviando no terminal o comando "*create-user <email> <senha> <nome>*", o usuário irá selecionar a opção de criar um usuário no sistema:
-    > create-user leticiamanuelletd@gmail.com senha Leticia Manuelle
+    > create-user leticiamanuelletd@gmail.com senha Leticia Manuelle<br />
     > Usuário criado
 
 - Caso o usuário tente criar um novo usuário com um e-mail já utilizado, o sistema retornará a seguinte mensagem:
-    > create-user leticiamanuelletd@gmail.com senha Leticia Deodato
+    > create-user leticiamanuelletd@gmail.com senha Leticia Deodato<br />
     > Usuário já existe!
 
 - Caso o usuário tente criar um novo usuário sem preencher alguns dos campos requeridos, o sistema retornará a seguinte mensagem:
-    > create-user leticiamanuelletd@gmail.com senha
+    > create-user leticiamanuelletd@gmail.com senha<br />
     > Preencha todos os campos obrigatórios para poder concluir o cadastro
 
 - Enviando no terminal o comando "*login <email> <senha>*", o usuário irá selecionar a opção de se conectar no sistema:
-    > login leticiamanuelletd@gmail.com senha
+    > login leticiamanuelletd@gmail.com senha<br />
     > Logado como leticiamanuelletd@gmail.com
 
 - Caso o usuário erre o e-mail ou a senha ao tentar logar, o sistema retornará a seguinte mensagem:
-    > login leticiamtd@gmail.com senha
+    > login leticiamtd@gmail.com senha<br />
     > Senha ou usuário inválidos!
 
-    > login leticiamanuelletd@gmail.com senhaErrada
+    > login leticiamanuelletd@gmail.com senhaErrada<br />
     > Senha ou usuário inválidos!
 
 - Enviando no terminal o comando "*disconnect*", o usuário irá selecionar a opção de se desconectar do Concordo:
-    > disconnect
+    > disconnect<br />
     > Desconectando usuário leticiamanuelletd@gmail.com
 
 - Caso o usuário já esteja desconectado, o sistema retornará a seguinte mensagem:
-    > disconnect
+    > disconnect<br />
     > Não está conectado
 
 - Enviando no terminal o comando "*create-server <nome_servidor>*", o usuário irá selecionar a opção de criar um servidor:
-    > create-server Amigos
+    > create-server Amigos<br />
     > Servidor criado
 
 - Caso já exista um servidor com esse nome, o sistema retornará a seguinte mensagem:
-    > create-server Faculdade
+    > create-server Faculdade<br />
     > Servidor com esse nome já existe
 
 - Caso o usuário não preencha o nome do servidor que quer criar, o sistema retornará a seguinte mensagem:
-    > create-server
+    > create-server<br />
     > Preencha todos os campos obrigatórios para poder criar o Servidor
 
 - Caso o usuário não esteja logado ao tentar criar o servidor, o sistema retornará a seguinte mensagem:
-    > create-server Amigos
+    > create-server Amigos<br />
     > Usuário precisa estar logado para poder criar um Servidor
 
 - Enviando no terminal o comando "*set-server-desc <nome_servidor> "<descrição>"*", o usuário irá selecionar a opção de modificar a descrição de um servidor:
-    > set-server-desc Amigos "Pessoal do colégio"
+    > set-server-desc Amigos "Pessoal do colégio"<br />
     > Descrição do servidor 'Amigos' modificada!
 
 - Caso o usuário tenha digitado o nome do servidor errado, o sistema retornará a seguinte mensagem:
-    > set-server-desc AMIGOS "Pessoal do colégio"
+    > set-server-desc AMIGOS "Pessoal do colégio"<br />
     > Servidor 'AMIGOS' não encontrado
 
 - Caso o usuário não seja o dono/administrador do servidor em que está tentando modificar a descrição, o sistema retornará a seguinte mensagem:
-    > set-server-desc Amigos "Pessoal do colégio"
+    > set-server-desc Amigos "Pessoal do colégio"<br />
     > Você não pode alterar a descrição de um servidor que não foi criado por você
 
 - Caso o usuário não esteja logado, o sistema retornará a seguinte mensagem:
-    > set-server-desc Amigos "Pessoal do colégio"
+    > set-server-desc Amigos "Pessoal do colégio"<br />
     > Usuário precisa estar logado para poder modificar a descrição de um servidor
 
 - Enviando no terminal o comando "*set-server-invite-code <nome_servidor> <código>*", o usuário irá selecionar a opção de modificar o código de convite de um servidor:
-    > set-server-invite-code Amigos colegio2017
+    > set-server-invite-code Amigos colegio2017<br />
     > Código de convite do servidor 'Amigos' modificado!
 
 - Caso o servidor possua já um código de convite e o usuário deseje retirá-lo, o sistema retornará a seguinte mensagem:
-    > set-server-invite-code AMIGOS
+    > set-server-invite-code AMIGOS<br />
     > Código de convite do servidor 'Amigos' removido!
 
 - Caso o usuário digite o nome do servidor errado, o sistema retornará a seguinte mensagem:
-    > set-server-invite-code Amigos colegio
+    > set-server-invite-code Amigos colegio<br />
     > Servidor 'Amigos' não encontrado
 
 - Caso o usuário não seja o dono/administrador do servidor em que está tentando modificar o código de convite, o sistema retornará a seguinte mensagem:
-    > set-server-invite-code Amigos colegio
+    > set-server-invite-code Amigos colegio<br />
     > Você não pode alterar o código de convite de um servidor que não foi criado por você
 
 - Caso o usuário não esteja logado, o sistema retornará a seguinte mensagem:
-    > set-server-invite-code Amigos colegio
+    > set-server-invite-code Amigos colegio<br />
     > Usuário precisa estar logado para poder modificar o código de convite para o servidor
 
 - Enviando no terminal o comando "*list-servers*", o usuário irá selecionar a opção de listar todos os servidores disponíveis no sistema:
-    > list-servers
-    > Amigos
-    > "Pessoal do colégio"
-    > colegio
-    > Faculdade
-    > "Colegas de turma"
-    > Servidor aberto
+    > list-servers<br />
+    > Amigos<br />
+    > "Pessoal do colégio"<br />
+    > colegio<br />
+    > Faculdade<br />
+    > "Colegas de turma"<br />
+    > Servidor aberto<br />
     > Lista de servidores finalizada
 
 - Enviando no terminal o comando "*remove <nome_servidor>*", o usuário irá selecionar a opção de remover um servidor do sistema:
-    > remove Amigos
+    > remove Amigos<br />
     > Servidor 'Amigos' removido
 
 - Caso o usuário digite o nome do servidor errado, o sistema retornará a seguinte mensagem:
-    > remove Amigos
+    > remove Amigos<br />
     > Servidor 'Amigos' não encontrado
 
 - Caso o usuário não seja o dono/administrador do servidor que está tentando remover, o sistema retornará a seguinte mensagem:
-    > remove Amigos
+    > remove Amigos<br />
     > Você não é o dono do servidor 'Amigos'
 
 - Caso o usuário não esteja logado, o sistema retornará a seguinte mensagem:
-    > remove Amigos
+    > remove Amigos<br />
     > Usuário precisa estar logado para poder remover servidores do sistema
 
 - Enviando no terminal o comando "*enter-server <nome_servidor> <código>*", o usuário irá selecionar a opção de entrar/se conectar a um servidor do sistema:
-    > enter-server Amigos colegio
+    > enter-server Amigos colegio<br />
     > Entrou no servidor com sucesso
 
 - Caso o usuário utilize o código errado para entrar no servidor, o sistema retornará a seguinte mensagem:
-    > enter-server Amigos colegio2017
+    > enter-server Amigos colegio2017<br />
     > Servidor requer código de convite
 
 - Caso o usuário digite o nome do servidor errado, o sistema retornará a seguinte mensagem:
-    > enter-server AMIGOS colegio
+    > enter-server AMIGOS colegio<br />
     > Servidor 'AMIGOS' não encontrado
 
 - Caso o usuário não esteja logado, o sistema retornará a seguinte mensagem:
-    > enter-server Amigos colegio
+    > enter-server Amigos colegio<br />
     > Usuário precisa estar logado para poder acessar os servidores do sistema
 
 - Enviando no terminal o comando "*leave-server*", o usuário irá selecionar a opção de sair/se desconectar de um servidor do sistema:
-    > leave-server
+    > leave-server<br />
     > Saindo do servidor 'Amigos'
 
 - Caso o usuário não esteja conectado a nenhum servidor, o sistema retornará a seguinte mensagem:
-    > leave-server
+    > leave-server<br />
     > Usuário não está conectado a nenhum servidor
 
 - Enviando no terminal o comando "*list-participants*", o usuário irá selecionar a opção de listar os participantes do servidor em que está conectado:
-    > list-participants
-    > Leticia
-    > Manuelle
-    > Felipe
-    > Gilberto
+    > list-participants<br />
+    > Leticia<br />
+    > Manuelle<br />
+    > Felipe<br />
+    > Gilberto<br />
     > Lista de participantes do servidor finalizada
 
 #
