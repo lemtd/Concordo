@@ -279,6 +279,7 @@ std::string System::list_participants() {
   }
 }
 
+//list-channels: usuário lista canais do servidor
 std::string System::list_channels() {
   std::string chText = "";
   std::string chVoice = "";
@@ -307,6 +308,7 @@ std::string System::list_channels() {
   return chText + "\n" + chVoice;
 }
 
+//create-channel <canal-nome> <canal-tipo>: usuário cria canal o servidor
 std::string System::create_channel(const std::string name, const std::string type) {
   if(userLogin == 0){
     return "Usuário precisa estar logado para poder criar canais em algum servidor do sistema";
@@ -345,6 +347,7 @@ std::string System::create_channel(const std::string name, const std::string typ
   return "";
 }
 
+//enter-channel <canal-nome>: usuário acessa o canal
 std::string System::enter_channel(const std::string name) {
   if(userLogin == 0){
     return "Usuário precisa estar logado para poder acessar os canais dos servidores";
@@ -369,6 +372,7 @@ std::string System::enter_channel(const std::string name) {
   }
 }
 
+//leave-channel: usuário sai do canal
 std::string System::leave_channel() {
   std::string out = channelConected;
   if(channelConected == ""){
@@ -378,6 +382,7 @@ std::string System::leave_channel() {
   return "Saindo do canal";
 }
 
+//send-message <mensagem>: usuário envia mensagem no canal
 std::string System::send_message(const std::string message) {
   if(userLogin == 0){
     return "Usuário precisa estar logado para poder enviar mensagens nos canais de algum servidor do sistema";
@@ -416,6 +421,7 @@ std::string System::send_message(const std::string message) {
   return "";
 }
 
+//list-messages: usuário lista mensagens do canal
 std::string System::list_messages() {
   if(userLogin == 0){
     return "Usuário precisa estar logado para poder visualizar as mensagens dos canais em algum servidor do sistema";
