@@ -391,12 +391,12 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
 
 - Enviando no terminal o comando "*list-messages*", o usuário irá selecionar a opção de listar mensagens existentes no canal em que está conectado atualmente:
     > list-messages<br />
-    > Leticia<8/4/2021 - 21:49>: Oie<br />
-    > Felipe<8/4/2021 - 22:01>: Tudo bom?<br />
-    > Isaac<8/4/2021 - 22:05>: E aí
+    > Leticia<8/4/2021 - 21:49:5>: Oie<br />
+    > Felipe<8/4/2021 - 22:1:25>: Tudo bom?<br />
+    > Isaac<8/4/2021 - 22:5:12>: E aí
 
     > list-messages<br />
-    > Julio<8/4/2021 - 23:21>: Alguém aí?<br />
+    > Julio<8/4/2021 - 23:21:2>: Alguém aí?<br />
 
 - Caso o usuário não esteja logado, o sistema retornará a seguinte mensagem:
     > list-messages<br />
