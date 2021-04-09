@@ -282,6 +282,9 @@ std::string System::list_participants() {
 std::string System::list_channels() {
   std::string chText = "";
   std::string chVoice = "";
+  if(userLogin == 0){
+    return "Usuário precisa estar logado para poder listar os canais de um servidor do sistema";
+  }
   if(serverConected == "") {
     return "Usuário não está conectado em nenhum servidor";
   }else{
@@ -328,14 +331,12 @@ std::string System::create_channel(const std::string name, const std::string typ
           channel->setNameCh(name);
           it->channels.push_back(channel);
           channelConected = name;
-          //channelTypeConected = type;
           return "Canal de texto '" + name + "' criado";
         }else if(type == "voz" || type == "Voz"){
           Channel *channel = new Voice;
           channel->setNameCh(name);
           it->channels.push_back(channel);
           channelConected = name;
-          //channelTypeConected = type;
           return "Canal de voz '" + name + "' criado";
         }
       }
@@ -458,13 +459,6 @@ std::string System::list_messages() {
     }
   }
   return print;
-}
-
-void System::save(){
-  std::ofstream myfile;
-  myfile.open("saveUsers.txt");
-  myfile << "Writing this to a file.\n";
-  myfile.close();
 }
 
 
