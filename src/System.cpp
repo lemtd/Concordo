@@ -514,10 +514,10 @@ bool System::searchingChannel(std::string name, std::string type){
 }
 
 //Funçāo que retorna data e hora atual
-std::string System::timetime(){
+std::string System::timeNow(){
   struct tm *timeNow;
   int convert;
-  std::string timeNowIs = "<";
+  std::string now = "<";
   time_t seconds;
   time(&seconds);
   timeNow = gmtime(&seconds);
@@ -526,11 +526,11 @@ std::string System::timetime(){
   }else{
     convert = timeNow->tm_mday;
   }
-  timeNowIs = timeNowIs + std::to_string(convert) + "/";
+  now = now + std::to_string(convert) + "/";
   convert = timeNow->tm_mon + 1;
-  timeNowIs = timeNowIs + std::to_string(convert) + "/";
+  now = now + std::to_string(convert) + "/";
   convert = timeNow->tm_year + 1900;
-  timeNowIs = timeNowIs + std::to_string(convert) + " - ";
+  now = now + std::to_string(convert) + " - ";
   convert = timeNow->tm_hour;
   convert = (convert + BRT) % 24;
   if(convert == -1){
@@ -540,10 +540,10 @@ std::string System::timetime(){
   }else if(convert == -3){
     convert = 21;
   }
-  timeNowIs = timeNowIs + std::to_string(convert) + ":";
+  now = now + std::to_string(convert) + ":";
   convert = timeNow->tm_min;
-  timeNowIs = timeNowIs + std::to_string(convert) + ":";
+  now = now + std::to_string(convert) + ":";
   convert = timeNow->tm_sec;
-  timeNowIs = timeNowIs + std::to_string(convert) + ">";
+  now = now + std::to_string(convert) + ">";
   return timeNowIs;
 }
