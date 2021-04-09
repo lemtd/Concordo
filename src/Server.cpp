@@ -23,12 +23,6 @@ void Server::setDescription(std::string txt) {
 void Server::setInvite(std::string code) {
   invite = code;
 }
-/*void Server::setCh(std::vector<Channel> ch){
-  channels = ch;
-}
-void Server::setIds(std::vector<int> userIds){
-  ids = userIds;
-}*/
 
 //Getters da classe Server
 int Server::getOwner() {
@@ -43,9 +37,3 @@ std::string Server::getDescription() {
 std::string Server::getInvite() {
   return invite;
 }
-/*std::vector<Channel> Server::getCh(){
-  return channels;
-}
-std::vector<int> Server::getIds(){
-  return ids;
-}*/

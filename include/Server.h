@@ -14,7 +14,7 @@ class Server {
     std::string invite;
 
   public:
-    //Atributos da classe Server (não soube colocar como privado e utilizar seus setters e getters, por isso está como público)
+    //Atributos da classe Server
     std::vector<Channel*> channels;
     std::vector<int> ids;
 
@@ -28,16 +28,12 @@ class Server {
     void setNameServer(std::string serverName);
     void setDescription(std::string txt);
     void setInvite(std::string code);
-    /*void setCh(std::vector<Channel> ch);
-    void setIds(std::vector<int> userIds);*/
 
     //Getters da classe Server
     int getOwner();
     std::string getNameServer();
     std::string getDescription();
     std::string getInvite();
-    /*std::vector<Channel> getCh();
-    std::vector<int> getIds();*/
 };
 
 #endif

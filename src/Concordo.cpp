@@ -29,6 +29,5 @@ int main() {
   // o executor recebe o cin e o cout. Ele irá os utilizar para ler as linhas
   // de comando, executar o método correto em "sistema" e exibir as mensagens
   Executor.start(std::cin, std::cout);
-  system.save();
   return 0;
 }

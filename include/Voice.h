@@ -4,6 +4,7 @@
 #include "Message.h"
 #include "Channel.h"
 
+//Classe canal de voz
 class Voice : public Channel{
   //Atributo da classe derivada Voice
   private:
@@ -16,6 +17,7 @@ class Voice : public Channel{
     //Setter do atributo da classe Voice
     void setLast(Message one);
     
+    //Getter do atributo da classe Voice
     std::string getLast();
 };
 

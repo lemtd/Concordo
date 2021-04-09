@@ -53,10 +53,12 @@ class System {
     
     //Métodos auxiliares
     //verifica se email já existe no sistema
-    bool searchingEmail(std::string email); //verifica se servidor já existe no sistema 
-    bool searchingServer(std::string name); //verifica se o canal já existe no sistema 
+    bool searchingEmail(std::string email);
+    //verifica se servidor já existe no sistema 
+    bool searchingServer(std::string name);
+    //verifica se o canal já existe no sistema 
     bool searchingChannel(std::string name, std::string type);
-    //méétodo que retorna data e hora atual
+    //Método que retorna data e hora atual
     std::string timeNow();
 };
 
