@@ -1,20 +1,22 @@
-## Concordo
+# Concordo
+
+<br />
 
 ## Universidade Federal do Rio Grande do Norte (UFRN)
 ## Instituto Metrópole Digital (IMD)
 
-#
+<br />
 
 ### Disciplina: Linguagem de Programação I
 ### Professor: Isaac Franco Fernandes
 ### Aluna: Leticia Manuelle Tomaz Deodato (20180063452)
 
-#
-#
+<br />
+<br />
 
 ### 1. Sobre o projeto:
 Concordo é um sistema espelhado no Discord e desenvolvido em C++ como projeto para a disciplina de Linguagem de Programação I do curso Bacharelado em Tecnologia da Informação da UFRN.
-O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h, além dos arquivos makefile, script_comandos.txt, .gitignore e README.md:
+O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h, além dos arquivos makefile, script_comandos.txt e README.md:
 
 - Pasta "src" possui 10 arquivos .cpp:
   - Concordo.cpp (arquivo com o código da função main);
@@ -41,16 +43,15 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
 
 - makefile (arquivo de configuração que instrui o que o Make deve fazer);
 - script_comandos.txt (comandos pré estabelecidos para usar ao compilar o programa);
-- .gitignore;
 - README.md.
 
-#
+<br />
 
 ### 2. Os itens desenvolvidos para o primeiro momento de entrega:
 1. *quit*: método de saída do sistema (sem parâmetros)
     > Caso de teste: linha 07 do System.cpp
 
-2. *create-server <email> <senha> <nome_usuario>*: método de criação do usuário, passando 03 strings como parâmetros e armazenando os dados no vector de usuário
+2. *create-user <email> <senha> <nome_usuario>*: método de criação do usuário, passando 03 strings como parâmetros e armazenando os dados no vector de usuário
     > Caso de teste: linha 12 do System.cpp
 
 3. *login <email> <senha>*: método de conexão do usuário ao sistema, passando 02 strings como parâmetros e verificando a existência do usuário ao percorrer o vector de usuário
@@ -74,7 +75,7 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
 9. *remove <nome_servidor>*: método de remoção de um servidor, passando 01 string como parâmetro e verificando a permissão para tal ação
     > Caso de teste: linha 176 do System.cpp
 
-10. *enter-server <nome_servidor> <código>*: método de conexão de um usuário a um servidor, passando 02 strings como parâmetro e verificando as permissões para tal ação
+10. *enter-server <nome_servidor> <código>*: método de conexão de um usuário a um servidor, passando 02 strings como parâmetros e verificando as permissões para tal ação
     > Caso de teste: linha 201 do System.cpp
 
 11. *leave-server*: método de desconexão do usuário no servidor conectado atualmente (sem parâmetros)
@@ -83,9 +84,30 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
 12. *list-participants*: método de listagem dos participantes do servidor, percorrendo o vector de servidores e logo em seguida o vector de IDS dos participantes (sem parâmetros)
     > Caso de teste: linha 253 do System.cpp
 
-#
+<br />
 
-### 3. Para compilar o programa:
+### 3. Os itens desenvolvidos para o segundo momento de entrega:
+1. *list-channels*: método de listagem dos canais de um servidor, percorrendo o vector de servidores e logo em seguida o de canais, além de verificar o tipo de cada canal e separálos em canais de texto e canais de voz
+    > Caso de teste: linha 282 do System.cpp
+
+2. *create-channel <nome_canal> <tipo_canal>*: método de criação de canais dentro de um servidor, passando 02 strings como parâmetros e armazenando as informações dentro do vector de canais
+    > Caso de teste: linha 307 do System.cpp
+
+3. *enter-channel <nome_canal>*: método de conexão de um usuário a um canal de um servidor, passando 01 string como parâmetro e verificando as permissões para tal ação
+    > Caso de teste: linha 345 do System.cpp
+
+4. *leave-channel*: método de desconexão do usuário no canal conectado atualmente (sem parâmetros)
+    > Caso de teste: linha 369 do System.cpp
+
+5. *send-message <message>*: método de envio de mensagens com base no tipo de canal que o usuário está conectado atualmente
+    > Caso de teste: linha 378 do System.cpp
+
+6. *list-messages*: método de listagem das mensagens do canal. Se o canal for do tipo "texto", o vector de mensagens do canal será perccorido retornando todas as mensagens de texto enviadas ali; caso o caso seja do tipo "voz", será retornada a última mensagem enviada ao canal (sem parâmetros)
+    > Caso de teste: linha 416 do System.cpp
+
+<br />
+
+### 4. Para compilar o programa:
 - Terminal do REPL.it:
     - Extrair o arquivo .zip;
     - Acessar o site <repl.it>;
@@ -103,12 +125,13 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
     - Abrir o terminal;
     - Utilizar o comando "ls" no terminal para listar as pastas;
     - Utilizar o comando "cd Documentos" no terminal para acessar a pasta Documentos;
+    - Utilizar o comando "cd Concordo" no terminal para acessar a pasta do Concordo;
     - Utilizar o comando "make run" no terminal para rodar o arquivo makefile que irá compilar o programa sem o script_comandos.txt;
     - Caso queira utilizar o script, utilizar comando "make" seguido de "./Concordo < script_comandos.txt".
 
-#
+<br />
 
-### 4. Roteiro:
+### 5. Roteiro:
 - Ao rodar pela primeira vez o programa, o usuário deverá utilizar qualquer dos seguintes comandos:
     > quit<br />
     > create-user <email> <senha> <nome><br />
@@ -121,7 +144,13 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
     > remove <nome_servidor><br />
     > enter-server <nome_servidor> <código convite><br />
     > leave-server<br />
-    > list-participants
+    > list-participants<br />
+    > list-channels<br />
+    > create-channel <nome_canal> <tipo_canal><br />
+    > enter-channel <nome_canal><br />
+    > leave-channel<br />
+    > send-message <mensagem><br />
+    > list-messages
 
 - Enviando no terminal o comando "*quit*", o usuário irá selecionar a opção de saída do Concordo:
     > quit<br />
@@ -268,20 +297,147 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
     > Gilberto<br />
     > Lista de participantes do servidor finalizada
 
-#
+- Enviando no terminal o comando "*list-channels*", o usuário irá selecionar a opção de listar os canais do servidor em que está conectado:
+    > list-channels<br />
+    > #canais de texto<br />
+    > Amigos<br />
+    > Faculdade<br />
+    > #canais de voz<br />
+    > Trabalho
 
-### 5. Limitações do programa:
-Entrega I:
+- Caso o usuáio não esteja logado, o sistema retornará a seguinte mensagem:
+    > list-channels
+    > Usuário precisa estar logado para poder listar os canais de um servidor do sistema
+
+- Caso o usuário não esteja conectado a nenhum servidor, o sistema retornará a seguinte mensagem:
+    > list-channels
+    > Usuário não está conectado em nenhum servidor
+
+- Enviando no terminal o comando "*create-channel <nome_canal> <tipo_canal>*", o usuário irá selecionar a opção de criar um canal dentro do servidor conectado:
+    > create-channel Amigos texto<br />
+    > Canal de texto 'Amigos' criado
+
+    > create-channel Trabalho voz<br />
+    > Canal de voz 'Trabalho' criado
+
+- Caso o usuário não esteja logado, o sistema retornará a seguinte mensagem:
+    > create-channel Amigos texto<br />
+    > Usuário precisa estar logado para poder criar canais em algum servidor do sistema
+
+- Caso o usuário não esteja conectado a nenhum servidor, o sistema retornará a seguinte mensagem:
+    > create-channel Amigos texto<br />
+    > Usuário não está conectado em nenhum servidor
+
+- Caso o usuário não preencha o nome do canal ou o tipo do canal que quer criar, o sistema retornará a seguinte mensagem:
+    > create-channel Amigos<br />
+    > Preencha todos os campos obrigatórios para poder criar o Canal
+
+    > create-channel<br />
+    > Preencha todos os campos obrigatórios para poder criar o Canal
+
+- Caso o usuário tente criar um canal com nome e tipo igual a algum canal que já possua essas mesma informações, o sistema retornará a seguinte mensagem:
+    > create-channel Faculdade texto<br />
+    > Canal de texto 'Faculdade' já existe!
+
+    > create-channel Trabalho voz<br />
+    > Canal de voz 'Trabalho' já existe!
+
+- Enviando no terminal o comando "*enter-channel <nome_canal>*", o usuário irá selecionar a opção de entrar em um canal dentro do servidor conectado:
+    > enter-channel Faculdade<br />
+    > Entrou no canal 'Faculdade'
+
+- Caso o usuário não esteja logado, o sistema retornará a seguinte mensagem:
+    > enter-channel Amigos<br />
+    > Usuário precisa estar logado para poder acessar os canais dos servidores
+
+- Caso o usuário não esteja conectado a nenhum servidor, o sistema retornará a seguinte mensagem:
+    > enter-channel Amigos<br />
+    > Usuário não está conectado em nenhum servidor
+
+- Caso o usuário tente acessar um canal que já está conectado, o sistema retornará a seguinte mensagem:
+    > enter-channel Amigos<br />
+    > Usuário já está no canal
+
+- Caso o usuário tente acessar um canal que não exista no servidor, o sistema retornará a seguinte mensagem:
+    > enter-channel Esportes<br />
+    > Canal 'Esportes' não existe
+
+- Enviando no terminal o comando "*leave-channel*", o usuário irá selecionar a opção de sair do canal em que está conectado atualmente:
+    > leave-channel<br />
+    > Saindo do canal
+
+- Caso o usuário não esteja conectado a nenhum canal, o sistema retornará a seguinte mensagem:
+    > leave-channel<br />
+    > Usuário não está conectado a nenhum canal
+
+- Enviando no terminal o comando "*send-message <mensagem>*", o usuário irá selecionar a opção de enviar uma mensagem no canal em que está conectado atualmente:
+    > send-message Oie<br />
+    > Mensagem de texto enviada
+
+    > send-message Tudo bom?<br />
+    > Mensagem de voz enviada
+
+- Caso o usuário não esteja logado, o sistema retornará a seguinte mensagem:
+    > send-message Oie<br />
+    > Usuário precisa estar logado para poder enviar mensagens nos canais de algum servidor do sistema
+
+- Caso o usuário não esteja conectado a nenhum servidor, o sistema retornará a seguinte mensagem:
+    > send-message Tudo bom?<br />
+    > Usuário não está conectado em nenhum servidor
+
+- Caso o usuário não esteja conectado a nenhum canal, o sistema retornará a seguinte mensagem
+    > send-message E ai<br />
+    > Usuário não está conectado em nenhum canal
+
+- Enviando no terminal o comando "*list-messages*", o usuário irá selecionar a opção de listar mensagens existentes no canal em que está conectado atualmente:
+    > list-messages<br />
+    > Leticia<8/4/2021 - 21:49>: Oie<br />
+    > Felipe<8/4/2021 - 22:01>: Tudo bom?<br />
+    > Isaac<8/4/2021 - 22:05>: E aí
+
+    > list-messages<br />
+    > Julio<8/4/2021 - 23:21>: Alguém aí?<br />
+
+- Caso o usuário não esteja logado, o sistema retornará a seguinte mensagem:
+    > list-messages<br />
+    > Usuário precisa estar logado para poder visualizar as mensagens dos canais em algum servidor do sistema
+
+- Caso o usuário não esteja conectado a nenhum servidor, o sistema retornará a seguinte mensagem:
+    > list-messages<br />
+    > Usuário não está conectado em nenhum servidor
+
+- Caso o usuário não esteja conectado a nenhum canal, o sistema retornará a seguinte mensagem
+    > list-messages<br />
+    > Usuário não está conectado em nenhum canal
+
+- Caso o canal não possua mensagens, o sistema retornará a seguinte mensagem:
+    > list-messages<br />
+    > Sem mensagens de texto para exibir
+
+    > list-messages<br />
+    > Sem mensagens de voz para exibir
+
+<br />
+
+### 6. Limitações do programa:
+Entrega I:<br />
 Não há limitações.
 
-#
+Entrega II:<br />
+Não há limitações.
 
-### 6. Limitações minhas:
-Entrega I:
-Encontrei dificuldade na funcionalidade *enter-server* ao tentar implementar o acesso ao vector de IDS de participantes de um servidor, por isso deixei o vector de IDS de particpantes como público em sua classe.
-Ao colocar o arquivo para rodar com o makefile, apareceram alguns erros com relação a algumas funcionalidades adicionais, que posteriormente não foram mais utilizadas. Ainda assim, o professor indicou o que era e aonde era o erro e me ajudou a corrigí-lo.
+<br />
 
-#
+### 7. Limitações minhas:
+Entrega I:<br />
+Encontrei dificuldade na funcionalidade enter-server ao tentar implementar o acesso ao vector de IDS de participantes de um servidor, por esse motivo deixei esse mesmo vector como público em sua classe.<br />
+Além disso, ao colocar o arquivo para compilar com o makefile, apareceram alguns erros com relação a algumas funcionalidades adicionais, que posteriormente não foram mais utilizadas. Ainda assim, o professor indicou o que era e aonde era o erro e me ajudou a corrigí-lo.
 
-### 7. Considerações finais:
-O código precisa ser organizado de melhor forma futuramente.
+
+Entrega II:<br />
+Encontrei dificuldade com o conteúdo de herança ao se tratar de separar os tipos de canais existentes (relação entre classe base e classes derivadas). As dúvidas, no entanto, foram tiradas pelo professor durante momentos síncronos e assíncronos.
+
+<br />
+
+### 8. Considerações finais:
+O código precisa ser melhor organizado futuramente.
