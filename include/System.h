@@ -50,7 +50,6 @@ class System {
     std::string leave_channel();
     std::string send_message(const std::string mensagem);
     std::string list_messages();
-    void save();
     
     //Métodos auxiliares
     //verifica se email já existe no sistema
@@ -58,7 +57,7 @@ class System {
     bool searchingServer(std::string name); //verifica se o canal já existe no sistema 
     bool searchingChannel(std::string name, std::string type);
     //méétodo que retorna data e hora atual
-    std::string timetime();
+    std::string timeNow();
 };
 
 #endif
