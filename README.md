@@ -87,10 +87,10 @@ O código foi feito no REPL.it e possui 2 pastas separando os arquivos .cpp e .h
 <br />
 
 ### 3. Os itens desenvolvidos para o segundo momento de entrega:
-1. *list-channels*: método de listagem dos canais de um servidor, percorrendo o vector de servidores e logo em seguida o de canais, além de verificar o tipo de cada canal e separálos em canais de texto e canais de voz
+1. *list-channels*: método de listagem dos canais de um servidor, percorrendo o vector de servidores e logo em seguida o de canais, além de verificar o tipo de cada canal e separá-los em canais de texto e canais de voz
     > Caso de teste: linha 282 do System.cpp
 
-2. *create-channel <nome_canal> <tipo_canal>*: método de criação de canais dentro de um servidor, passando 02 strings como parâmetros e armazenando as informações dentro do vector de canais
+2. *create-channel <nome_canal> <tipo_canal>*: método de criação de canais dentro de um servidor, passando 02 strings como parâmetros e armazenando essas informações dentro do vector de canais
     > Caso de teste: linha 307 do System.cpp
 
 3. *enter-channel <nome_canal>*: método de conexão de um usuário a um canal de um servidor, passando 01 string como parâmetro e verificando as permissões para tal ação
