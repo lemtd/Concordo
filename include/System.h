@@ -16,7 +16,6 @@ class System {
     int userLogin;
     std::string serverConected;
     std::string channelConected;
-    std::string channelTypeConected;
     void saveUsers();
     void saveServers();
 
