@@ -341,6 +341,8 @@ std::string System::create_channel(const std::string name, const std::string typ
           channelConected = name;
           return "Canal de voz '" + name + "' criado";
         }
+      }else{
+        return "Usuário não é administrador desse servidor, portanto, não possui permissão para criação de canais";
       }
     }
   }
