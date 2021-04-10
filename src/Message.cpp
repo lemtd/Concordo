@@ -6,10 +6,6 @@ Message::Message(std::string date, int id, std::string c) {
   content = c;
 } //Construtor da classe Message
 
-Message::Message(std::string c) {
-  content = c;
-} //Construtor da classe Message
-
 Message::Message() {} //Construtor da classe Message
 Message::~Message() {} //Destrutor da classe Message
 
