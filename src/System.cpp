@@ -14,7 +14,6 @@
 
 //quit: sai do sistema
 std::string System::quit() {
-  download();
   return "Saindo do Concordo";
 }
 
@@ -27,6 +26,7 @@ std::string System::create_user(const std::string email, const std::string passw
   if(searchingEmail(email) == false){
     User *user = new User(size, name, email, password);
     users.push_back(*user);
+    download();
     return "Usuário criado";
   }else{
     return "Usuário já existe!";
@@ -104,6 +104,7 @@ std::string System::create_server(const std::string name) {
           }
         }
       }
+      download();
       return "Servidor criado";
     }else{
       return "Servidor com esse nome já existe";
@@ -122,6 +123,7 @@ std::string System::set_server_desc(const std::string name, const std::string de
           if(name == is->getNameServer()){
             if(userLogin == is->getOwner()){
               is->setDescription('"' + description + '"');
+              download();
               return "Descrição do servidor '" + is->getNameServer() + "' modificada!";
             }
           }
@@ -147,8 +149,10 @@ std::string System::set_server_invite_code(const std::string name, const std::st
         if(userLogin == is->getOwner()){
           is->setInvite(invite);
           if(invite == ""){
+            download();
             return "Código de convite do servidor '" + is->getNameServer() + "' removido!";
           }else{
+            download();
             return "Código de convite do servidor '" + is->getNameServer() + "' modificado!";
           }
         }
@@ -203,6 +207,7 @@ std::string System::remove_server(const std::string name) {
           if(name == is->getNameServer()){
             if(userLogin == is->getOwner()){
               servers.erase(is);
+              download();
               return "Servidor '" + name + "' removido";
             }
           }
@@ -348,12 +353,14 @@ std::string System::create_channel(const std::string name, const std::string typ
           channel->setNameCh(name);
           is->channels.push_back(channel);
           channelConected = name;
+          download();
           return "Canal de texto '" + name + "' criado";
         }else if(type == "voz" || type == "Voz" || type == "VOZ"){
           Channel *channel = new Voice;
           channel->setNameCh(name);
           is->channels.push_back(channel);
           channelConected = name;
+          download();
           return "Canal de voz '" + name + "' criado";
         }
       }else{
@@ -361,7 +368,7 @@ std::string System::create_channel(const std::string name, const std::string typ
       }
     }
   }
-  return "";
+  return "Servidor não encontrado.";
 }
 
 //enter-channel <canal-nome>: usuário acessa o canal
@@ -419,17 +426,19 @@ std::string System::send_message(const std::string message) {
           if(t != nullptr){
             Message sms(timeNow(), userLogin, message);
             t->text.push_back(sms);
+            download();
             return "Mensagem de texto enviada";
           }else if(v != nullptr){
             Message sms(timeNow(), userLogin, message);
             v->setLast(sms);
+            download();
             return "Mensagem de voz enviada";
           }
         }
       }
     }
   }
-  return "";
+  return "Canal não encontrado.";
 }
 
 //list-messages: usuário lista mensagens do canal
@@ -484,7 +493,7 @@ std::string System::list_messages() {
 
 void System::downloadUsers(){
   std::ofstream database;
-  database.open ("outUsers.txt");
+  database.open ("backupUsers.txt");
   database << users.size();
   for(std::vector<User>::iterator iu = users.begin(); iu != users.end(); iu++){
     database << "\n";
@@ -501,7 +510,7 @@ void System::downloadUsers(){
 
 void System::downloadServers(){
   std::ofstream database;
-  database.open ("outServers.txt");
+  database.open ("backupServers.txt");
   database << servers.size();
   for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
     database << "\n";
