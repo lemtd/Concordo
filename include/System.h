@@ -16,8 +16,10 @@ class System {
     int userLogin;
     std::string serverConected;
     std::string channelConected;
-    void saveUsers();
-    void saveServers();
+    void downloadUsers();
+    void downloadServers();
+    void uploadUsers();
+    void uploadServers();
 
   public:
     //quit: sai do sistema
@@ -50,6 +52,8 @@ class System {
     std::string leave_channel();
     std::string send_message(const std::string mensagem);
     std::string list_messages();
+    void download();
+    void upload();
     
     //Métodos auxiliares
     //verifica se email já existe no sistema

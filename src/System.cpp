@@ -14,6 +14,7 @@
 
 //quit: sai do sistema
 std::string System::quit() {
+  download();
   return "Saindo do Concordo";
 }
 
@@ -38,14 +39,14 @@ std::string System::login(const std::string email, const std::string password) {
   channelConected = "";
   if(userLogin != 0){
     if(searchingEmail(email)){
-      for(std::vector<User>::iterator it = users.begin(); it != users.end(); it++){
-        if(email == it->getEmail()){
-          if(password == it->getPassword()){
-            if(userLogin == it->getId()){
-              return "Logado como " + it->getEmail();
+      for(std::vector<User>::iterator iu = users.begin(); iu != users.end(); iu++){
+        if(email == iu->getEmail()){
+          if(password == iu->getPassword()){
+            if(userLogin == iu->getId()){
+              return "Logado como " + iu->getEmail();
             }
-            userLogin = it->getId();
-            return "Trocando de usuário... Logado como " + it->getEmail(); 
+            userLogin = iu->getId();
+            return "Trocando de usuário... Logado como " + iu->getEmail(); 
           }
         }
       }
@@ -53,11 +54,11 @@ std::string System::login(const std::string email, const std::string password) {
     return "Senha ou usuário inválidos!";
   }else{
     if(searchingEmail(email)){
-      for(std::vector<User>::iterator it = users.begin(); it != users.end(); it++){
-        if(email == it->getEmail()){
-          if(password == it->getPassword()){
-            userLogin = it->getId();
-            return "Logado como " + it->getEmail(); 
+      for(std::vector<User>::iterator iu = users.begin(); iu != users.end(); iu++){
+        if(email == iu->getEmail()){
+          if(password == iu->getPassword()){
+            userLogin = iu->getId();
+            return "Logado como " + iu->getEmail(); 
           }
         }
       }
@@ -69,11 +70,11 @@ std::string System::login(const std::string email, const std::string password) {
 //disconnect: usuário faz logoff
 std::string System::disconnect() {
   if(userLogin != 0){
-    for(std::vector<User>::iterator it = users.begin(); it != users.end(); it++){
-      if(userLogin == it->getId()){
+    for(std::vector<User>::iterator iu = users.begin(); iu != users.end(); iu++){
+      if(userLogin == iu->getId()){
         userLogin = 0;
         serverConected = "";
-        return "Desconectando usuário " + it->getEmail();
+        return "Desconectando usuário " + iu->getEmail();
         break;        
       }
     }
@@ -95,11 +96,11 @@ std::string System::create_server(const std::string name) {
     if(searchingServer(name) == false){
       Server *server = new Server(userLogin, name, code, description);
       servers.push_back(*server);
-      for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-        if(name == it->getNameServer()){
-          if(userLogin == it->getOwner()){
-            it->ids.push_back(userLogin);
-            serverConected = it->getNameServer();
+      for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+        if(name == is->getNameServer()){
+          if(userLogin == is->getOwner()){
+            is->ids.push_back(userLogin);
+            serverConected = is->getNameServer();
           }
         }
       }
@@ -117,11 +118,11 @@ std::string System::set_server_desc(const std::string name, const std::string de
   }else{
     if(servers.empty() == false){
       if(searchingServer(name)){
-        for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-          if(name == it->getNameServer()){
-            if(userLogin == it->getOwner()){
-              it->setDescription('"' + description + '"');
-              return "Descrição do servidor '" + it->getNameServer() + "' modificada!";
+        for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+          if(name == is->getNameServer()){
+            if(userLogin == is->getOwner()){
+              is->setDescription('"' + description + '"');
+              return "Descrição do servidor '" + is->getNameServer() + "' modificada!";
             }
           }
         }
@@ -141,14 +142,14 @@ std::string System::set_server_invite_code(const std::string name, const std::st
     return "Usuário precisa estar logado para poder modificar o código de convite para o servidor";
   }
   if(servers.empty() == false){
-    for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-      if(name == it->getNameServer()){
-        if(userLogin == it->getOwner()){
-          it->setInvite(invite);
+    for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+      if(name == is->getNameServer()){
+        if(userLogin == is->getOwner()){
+          is->setInvite(invite);
           if(invite == ""){
-            return "Código de convite do servidor '" + it->getNameServer() + "' removido!";
+            return "Código de convite do servidor '" + is->getNameServer() + "' removido!";
           }else{
-            return "Código de convite do servidor '" + it->getNameServer() + "' modificado!";
+            return "Código de convite do servidor '" + is->getNameServer() + "' modificado!";
           }
         }
         return "Você não pode alterar o código de convite de um servidor que não foi criado por você";
@@ -162,24 +163,33 @@ std::string System::set_server_invite_code(const std::string name, const std::st
 
 //list-servers: usuário lista servidores
 std::string System::list_servers() {
+  std::string print = "";
   if(userLogin == 0){
     return "Usuário precisa estar logado para poder listar os servidores disponíveis.";
   }else{
     if(servers.empty() == false){
-      for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-        std::cout << it->getNameServer() << std::endl;
-        std::cout << it->getDescription() << std::endl;
-        if(it->getInvite() == ""){
-          std::cout << "Servidor aberto" << std::endl;
+      for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+        if(print == ""){
+          print = is->getNameServer() + "\n" + is->getDescription() + "\n"; 
+          if(is->getInvite() == ""){
+            print = print + "Servidor aberto";
+          }else{
+            print = print + is->getInvite();
+          }
         }else{
-          std::cout << it->getInvite() << std::endl;
+           print = print + "\n" + is->getNameServer() + "\n" + is->getDescription() + "\n"; 
+          if(is->getInvite() == ""){
+            print = print + "Servidor aberto";
+          }else{
+            print = print + is->getInvite();
+          }
         }
       }
     }else{
       return "Não há servidores no sistema ainda";
     }
   }
-  return "Lista de servidores finalizada";
+  return print;
 }
 
 //remove-server <server-nome>: usuário remove servidores
@@ -189,10 +199,10 @@ std::string System::remove_server(const std::string name) {
   }else{
     if(servers.empty() == false){
       if(searchingServer(name)){
-        for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-          if(name == it->getNameServer()){
-            if(userLogin == it->getOwner()){
-              servers.erase(it);
+        for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+          if(name == is->getNameServer()){
+            if(userLogin == is->getOwner()){
+              servers.erase(is);
               return "Servidor '" + name + "' removido";
             }
           }
@@ -215,30 +225,30 @@ std::string System::enter_server(const std::string name, const std::string invit
   if(serverConected == name){
     return "Usuário já está no servidor";
   }else{
-    for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-      if(name == it->getNameServer()){
-        if(userLogin == it->getOwner()){
-          for(std::vector<int>::iterator i = (*it).ids.begin(); i != (*it).ids.end(); i++){
+    for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+      if(name == is->getNameServer()){
+        if(userLogin == is->getOwner()){
+          for(std::vector<int>::iterator i = is->ids.begin(); i != is->ids.end(); i++){
             if(userLogin == *i){
-              serverConected = it->getNameServer();
+              serverConected = is->getNameServer();
               return "Entrou no servidor com sucesso";
             }
           }
         }
-        for(std::vector<int>::iterator i = (*it).ids.begin(); i != (*it).ids.end(); i++){
+        for(std::vector<int>::iterator i = is->ids.begin(); i != is->ids.end(); i++){
           if(userLogin == *i){
-            serverConected = it->getNameServer();
+            serverConected = is->getNameServer();
             return "Entrou no servidor com sucesso";
           }
         }
-        if(it->getInvite() == ""){
-          it->ids.push_back(userLogin);
-          serverConected = it->getNameServer();
+        if(is->getInvite() == ""){
+          is->ids.push_back(userLogin);
+          serverConected = is->getNameServer();
           return "Entrou no servidor com sucesso";
         }
-        if(invite == it->getInvite()){
-          it->ids.push_back(userLogin);
-          serverConected = it->getNameServer();
+        if(invite == is->getInvite()){
+          is->ids.push_back(userLogin);
+          serverConected = is->getNameServer();
           return "Entrou no servidor com sucesso";
         }else{
           return "Servidor requer código de convite";
@@ -261,22 +271,27 @@ std::string System::leave_server() {
 
 //list-participants: usuário lista os participantes do servidor
 std::string System::list_participants() {
+  std::string print = "";
   if(serverConected == "") {
     return "Usuário não está conectado em nenhum servidor";
   }else{
-    for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-      if(serverConected == it->getNameServer()){
-        for(std::vector<int>::iterator iv = it->ids.begin(); iv != it->ids.end(); iv++){
+    for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+      if(serverConected == is->getNameServer()){
+        for(std::vector<int>::iterator i = is->ids.begin(); i != is->ids.end(); i++){
           for(std::vector<User>::iterator iu = users.begin(); iu != users.end(); iu++){
-            if(*iv == iu->getId()){
-              std::cout << iu->getName() << std::endl;
+            if(*i == iu->getId()){
+              if(print == ""){
+                print = iu->getName();
+              }else{
+                print = print + "\n" + iu->getName();
+              }              
             }
           }
         }
       }
     }
-    return "";
   }
+  return print;
 }
 
 //list-channels: usuário lista canais do servidor
@@ -291,9 +306,9 @@ std::string System::list_channels() {
   }else{
     chText = chText + "#canais de texto";
     chVoice = chVoice + "#canais de voz";
-    for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-      if(it->getNameServer() == serverConected){
-        for(std::vector<Channel*>::iterator ic = it->channels.begin(); ic != it->channels.end(); ic++){
+    for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+      if(is->getNameServer() == serverConected){
+        for(std::vector<Channel*>::iterator ic = is->channels.begin(); ic != is->channels.end(); ic++){
           Text *chT = dynamic_cast<Text*>(*ic);
           Voice *chV = dynamic_cast<Voice*>(*ic);
           if(chT != nullptr){
@@ -325,24 +340,24 @@ std::string System::create_channel(const std::string name, const std::string typ
     }
     return "Canal de voz '" + name + "' já existe!";
   }
-  for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-    if(it->getNameServer() == serverConected){
-      if(it->getOwner() == userLogin){
-        if(type == "texto" || type == "Texto"){
+  for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+    if(is->getNameServer() == serverConected){
+      if(is->getOwner() == userLogin){
+        if(type == "texto" || type == "Texto" || type == "TEXTO"){
           Channel *channel = new Text;
           channel->setNameCh(name);
-          it->channels.push_back(channel);
+          is->channels.push_back(channel);
           channelConected = name;
           return "Canal de texto '" + name + "' criado";
-        }else if(type == "voz" || type == "Voz"){
+        }else if(type == "voz" || type == "Voz" || type == "VOZ"){
           Channel *channel = new Voice;
           channel->setNameCh(name);
-          it->channels.push_back(channel);
+          is->channels.push_back(channel);
           channelConected = name;
           return "Canal de voz '" + name + "' criado";
         }
       }else{
-        return "Usuário não é administrador desse servidor, portanto, não possui permissão para criação de canais";
+        return "Usuário não é administrador desse servidor, portanto, não possui permissão de criação de canais";
       }
     }
   }
@@ -360,9 +375,9 @@ std::string System::enter_channel(const std::string name) {
   if(channelConected == name){
     return "Usuário já está no canal";
   }else{
-    for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-      if(serverConected == it->getNameServer()){
-        for(std::vector<Channel*>::iterator ic = it->channels.begin(); ic != it->channels.end(); ic++){
+    for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+      if(serverConected == is->getNameServer()){
+        for(std::vector<Channel*>::iterator ic = is->channels.begin(); ic != is->channels.end(); ic++){
           if((*ic)->getNameCh() == name){
             channelConected = (*ic)->getNameCh();
             return "Entrou no canal '" + name + "'";
@@ -395,9 +410,9 @@ std::string System::send_message(const std::string message) {
   if(channelConected == "") {
     return "Usuário não está conectado em nenhum canal";
   }
-  for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-    if(it->getNameServer() == serverConected){
-      for(std::vector<Channel*>::iterator ic = it->channels.begin(); ic != it->channels.end(); ic++){
+  for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+    if(is->getNameServer() == serverConected){
+      for(std::vector<Channel*>::iterator ic = is->channels.begin(); ic != is->channels.end(); ic++){
         if((*ic)->getNameCh() == channelConected){
           Text *t = dynamic_cast<Text*>(*ic);
           Voice *v = dynamic_cast<Voice*>(*ic);
@@ -406,13 +421,7 @@ std::string System::send_message(const std::string message) {
             t->text.push_back(sms);
             return "Mensagem de texto enviada";
           }else if(v != nullptr){
-            std::string print;
-            for(std::vector<User>::iterator iu = users.begin(); iu != users.end(); iu++){
-              if(iu->getId() == userLogin){
-                print = iu->getName() + timeNow() + ": " + message; 
-              }
-            }
-            Message sms(print);
+            Message sms(timeNow(), userLogin, message);
             v->setLast(sms);
             return "Mensagem de voz enviada";
           }
@@ -435,20 +444,20 @@ std::string System::list_messages() {
     return "Usuário não está conectado em nenhum canal";
   }
   std::string print = "";
-  for(std::vector<Server>::iterator it = servers.begin(); it != servers.end(); it++){
-    if(it->getNameServer() == serverConected){
-      for(std::vector<Channel*>::iterator ic = it->channels.begin(); ic != it->channels.end(); ic++){
+  for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+    if(is->getNameServer() == serverConected){
+      for(std::vector<Channel*>::iterator ic = is->channels.begin(); ic != is->channels.end(); ic++){
         if((*ic)->getNameCh() == channelConected){
           Text *t = dynamic_cast<Text*>(*ic);
           Voice *v = dynamic_cast<Voice*>(*ic);
           if(t != nullptr){
-            for(std::vector<Message>::iterator itt = t->text.begin(); itt != t->text.end(); itt++){
-              for(std::vector<User>::iterator iter = users.begin(); iter != users.end(); iter++){
-                if(itt->getSentBy() == iter->getId()){
+            for(std::vector<Message>::iterator im = t->text.begin(); im != t->text.end(); im++){
+              for(std::vector<User>::iterator iu = users.begin(); iu != users.end(); iu++){
+                if(im->getSentBy() == iu->getId()){
                   if(print == ""){
-                    print = iter->getName() + itt->getTime() + ": " + itt->getContent();
+                    print = iu->getName() + im->getTime() + ": " + im->getContent();
                   }else{
-                    print = print + "\n" + iter->getName() + itt->getTime() + ": " + itt->getContent();
+                    print = print + "\n" + iu->getName() + im->getTime() + ": " + im->getContent();
                   }
                 }
               }
@@ -457,9 +466,13 @@ std::string System::list_messages() {
               return "Sem mensagens de texto para exibir";
             }
           }else if(v != nullptr){
-            print = v->getLast();
-            if(print == ""){
+            if(v->getLastContent() == ""){
               return "Sem mensagens de voz para exibir";
+            }
+            for(std::vector<User>::iterator iu = users.begin(); iu != users.end(); iu++){
+              if(v->getLastSentBy() == iu->getId()){
+                print = iu->getName() + v->getLastTime() + ": " + v->getLastContent();
+              }
             }
           }
         }
@@ -467,6 +480,84 @@ std::string System::list_messages() {
     }
   }
   return print;
+}
+
+void System::downloadUsers(){
+  std::ofstream database;
+  database.open ("outUsers.txt");
+  database << users.size();
+  for(std::vector<User>::iterator iu = users.begin(); iu != users.end(); iu++){
+    database << "\n";
+    database << iu->getId();
+    database << "\n";
+    database << iu->getName();
+    database << "\n";
+    database << iu->getEmail();
+    database << "\n";
+    database << iu->getPassword();
+  }
+  database.close();
+}
+
+void System::downloadServers(){
+  std::ofstream database;
+  database.open ("outServers.txt");
+  database << servers.size();
+  for(std::vector<Server>::iterator is = servers.begin(); is != servers.end(); is++){
+    database << "\n";
+    database << is->getOwner();
+    database << "\n";
+    database << is->getNameServer();
+    database << "\n";
+    database << is->getDescription();
+    database << "\n";
+    database << is->getInvite();
+    database << "\n";
+    database << is->ids.size();
+    for(std::vector<int>::iterator i = is->ids.begin(); i != is->ids.end(); i++){
+      database << "\n";
+      database << *i;
+    }
+    database << "\n";
+    database << is->channels.size();
+    for(std::vector<Channel*>::iterator ic = is->channels.begin(); ic != is->channels.end(); ic++){
+      Text *t = dynamic_cast<Text*>(*ic);
+      Voice *v = dynamic_cast<Voice*>(*ic);
+      database << "\n";
+      database << (*ic)->getNameCh();
+      if(t != NULL){
+        database << "\n";
+        database << "TEXTO";
+        database << "\n";
+        database << t->text.size();
+        for(std::vector<Message>::iterator im = t->text.begin(); im != t->text.end(); im++){
+          database << "\n";
+          database << im->getSentBy();
+          database << "\n";
+          database << im->getTime();
+          database << "\n";
+          database << im->getContent();
+        }
+      }else if (v != NULL){
+        database << "\n";
+        database << "VOZ";
+        database << "\n";
+        database << 1;
+        database << "\n";
+        database << v->getLastSentBy();
+        database << "\n";
+        database << v->getLastTime();
+        database << "\n";
+        database << v->getLastContent();
+      }
+    }
+  }
+  database.close();
+}
+
+void System::download(){
+  downloadUsers();
+  downloadServers();
 }
 
 
